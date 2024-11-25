@@ -25,7 +25,6 @@
                     <h3 class="text-xl font-semibold text-gray-800 mt-4">Medicamentos</h3>
                     <p class="text-gray-600 mt-2">Encuentra medicamentos esenciales al mejor precio.</p>
                 </div>
-                <!-- Categoría 2 -->
                 <div class="hover:scale-105 transform transition duration-300">
                     <img src="https://via.placeholder.com/300x200" alt="Suplementos"
                         class="rounded-xl">
@@ -39,7 +38,6 @@
                     <h3 class="text-xl font-semibold text-gray-800 mt-4">Cuidado Personal</h3>
                     <p class="text-gray-600 mt-2">Productos para tu cuidado y belleza diaria.</p>
                 </div>
-                <!-- Categoría 4 -->
                 <div class="hover:scale-105 transform transition duration-300">
                     <img src="https://via.placeholder.com/300x200" alt="Ofertas"
                         class="rounded-xl">
@@ -49,11 +47,10 @@
             </div>
         </div>
 
-        <!-- Sección de Contacto -->
         <div class="w-full bg-transparent py-12 text-center">
             <h2 class="text-2xl font-bold text-gray-800 mb-4">Contáctanos o Visítanos</h2>
-            <p class="text-gray-700 mb-4">📍 Dirección: Av. Siempre Viva 123, Ciudad Colón</p>
-            <p class="text-gray-700 mb-4">📞 Teléfono: (123) 456-7890</p>
+            <p class="text-gray-700 mb-4">📍 Dirección: Avenida Colon 1608 - Monte Grande</p>
+            <p class="text-gray-700 mb-4">📞 Teléfono: (11) 4281-3358</p>
             <p class="text-gray-700 mb-4">🕒 Horario: Lunes a Viernes, 8:00 AM - 8:00 PM</p>
             <a href="https://maps.google.com"
                 class="inline-block bg-green-600 text-white py-2 px-6 rounded-full font-semibold hover:bg-green-700 transition duration-300">
