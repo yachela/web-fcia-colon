@@ -19,7 +19,9 @@
                 @method('DELETE')
 
                 <div class="mt-4">
-                    <button class="p-4 py-2 text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg shadow-lg" type="submit">
+                    <button class="p-4 py-2 text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg shadow-lg"
+                    onclick="return confirm('Estas seguro de querer eliminar?')""
+                    type="submit">
                         Eliminar producto
                     </button>
                 </div>
