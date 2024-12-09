@@ -17,7 +17,7 @@ class HomeController extends Controller
         $search = $request->input('search');
     
         if (!$search) {
-            return redirect()->back()->with('error', 'Por favor ingresa un término de búsqueda.');
+            return redirect()->back()->with('error', 'Por favor ingresa un valor.');
         }
     
         $product = Product::where('name', 'LIKE', "%$search%")->first();

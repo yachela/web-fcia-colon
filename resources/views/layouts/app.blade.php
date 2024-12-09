@@ -11,9 +11,10 @@
         <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}"> 
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+       
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" 
         rel="stylesheet">
@@ -40,5 +41,7 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
     </body>
 </html>

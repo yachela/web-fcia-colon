@@ -5,7 +5,8 @@
         </a>
         <div class="bg-white shadow-lg rounded-lg p-6">
             <h1 class="text-2xl font-bold text-gray-800 mb-4">{{$product->name}}</h1>
-            <p class="text-gray-600 mb-4">{{$product->description}}</p>
+            <img src="{{ asset($product->image_url) }}" alt="{{ $product->name }}" class="w-3/4 h-auto    object-cover rounded-lg">
+                        <p class="text-gray-600 mb-4">{{$product->description}}</p>
             <p class="text-lg text-gray-800 font-semibold">
                 Precio: <span class="text-green-600">${{ number_format($product->price, 2) }}</span>
             </p>

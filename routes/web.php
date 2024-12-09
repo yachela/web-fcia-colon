@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminUserController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -15,6 +16,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::resource('users', AdminUserController::class);
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('admin/users', AdminUserController::class);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/products/create', [ProductsController::class, 'create'])->name('products.create');

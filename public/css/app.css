@@ -1941,12 +1941,6 @@ select {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
-input {
-  border: none;
-  outline: none;
-  box-shadow: none;
-  padding-left: 30px;
-}
 
 .material-icons {
   font-size: 24px;
@@ -1958,9 +1952,6 @@ form .relative {
   max-width: 300px;
 }
 
-body {
-  background-color: red;
-}
 
 .selection\:bg-\[\#FF2D20\] *::-moz-selection {
   --tw-bg-opacity: 1;

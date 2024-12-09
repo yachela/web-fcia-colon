@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
 
 class ProductsController extends Controller
 {
@@ -33,30 +36,45 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'unique:products,name', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
-            'category_id' => ['required', 'exists:categories,id'],
-            'price' => ['required', 'numeric'],
-            'stock' => ['required', 'numeric'],
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'image_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'is_prescription' => 'required|boolean',
+            'expiration_date' => 'required|date',
+            'manufacturer' => 'required|string|max:255',
         ]);
 
+        $imagePath = null;
 
-        Product::create([
+
+        if ($request->hasFile('image_url')) {
+            $image = $request->file('image_url');
+
+
+            $imageName = Str::slug($request->name) . '.' . $image->getClientOriginalExtension();
+
+
+            $imagePath = $image->storeAs('products', $imageName, 'public');
+        }
+
+
+        $product = Product::create([
             'name' => $request->name,
             'description' => $request->description,
             'category_id' => $request->category_id,
             'price' => $request->price,
             'stock' => $request->stock,
-            'image_url' => $request->image_url,
+            'image_url' => 'storage/' . $imagePath,
             'is_prescription' => $request->is_prescription,
             'expiration_date' => $request->expiration_date,
             'manufacturer' => $request->manufacturer,
         ]);
 
-        return redirect('/products')->with('success', 'Producto creado correctamente.');
+        return redirect()->route('products.index')->with('success', 'Producto creado exitosamente.');
     }
-
-
     public function edit($id)
     {
         $product = Product::findOrFail($id);
@@ -69,26 +87,34 @@ class ProductsController extends Controller
         $product = Product::findOrFail($id);
 
         $request->validate([
-            'name' => ['required', 'string', 'max:255', 'unique:products,name,' . $product->id],
-            'description' => ['required', 'string', 'max:255'],
-            'category_id' => ['required', 'exists:categories,id'],
-            'price' => ['required', 'numeric'],
-            'stock' => ['required', 'numeric'],
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'is_prescription' => 'required|boolean',
+            'expiration_date' => 'required|date',
+            'manufacturer' => 'required|string|max:255',
         ]);
 
-        $product->update([
-            'name' => $request->name,
-            'description' => $request->description,
-            'category_id' => $request->category_id,
-            'price' => $request->price,
-            'stock' => $request->stock,
-            'image_url' => $request->image_url,
-            'is_prescription' => $request->is_prescription,
-            'expiration_date' => $request->expiration_date,
-            'manufacturer' => $request->manufacturer,
-        ]);
+        if ($request->hasFile('image_url')) {
 
-        return redirect("/products/{$product->id}")->with('success', 'Producto actualizado correctamente.');
+            if ($product->image_url) {
+                Storage::disk('public')->delete($product->image_url);
+            }
+
+
+            $image = $request->file('image_url');
+            $imageName = Str::slug($request->name) . '-' . time() . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('products', $imageName, 'public');
+            $product->image_url = $imagePath;
+        }
+
+
+        $product->update($request->except('image_url'));
+
+        return redirect()->route('products.index')->with('success', 'Producto actualizado exitosamente.');
     }
 
 

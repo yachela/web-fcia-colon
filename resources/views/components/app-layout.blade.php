@@ -31,6 +31,6 @@
              2024 Farmacia Colon. 
         </div>
     </footer>
-
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
 </body>
 </html>

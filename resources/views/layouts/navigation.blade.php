@@ -24,18 +24,23 @@
                 Contacto
             </a>
             @if(session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
+            <div id="alert-message" class="flex items-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded shadow-lg animate-slide-down mt-4" role="alert">
+                <button 
+                    onclick="document.getElementById('alert-message').remove()" 
+                    class="mr-6 text-gray-600 hover:text-gray-800 font-bold">
+                    &times;
+                </button>
+                <span class="block sm:inline">{{ session('error') }}</span>
             </div>
-        @endif
+            @endif
         
         <form action="{{ route('products.search') }}" method="GET" class="flex items-center">
             <div class="relative flex items-center border border-gray-300 rounded-full bg-white shadow focus-within:border-green-500 focus-within:ring-1 focus-within:ring-green-300" style="width: 300px;">
               
                 <span class="absolute left-3 flex items-center justify-center text-green-600 font-bold">
-                    <span class="material-icons">
+                    <span class="material-symbols-outlined material-icons">
                         search
-                    </span>
+                        </span>
                 </span>
                 
                 <input 
@@ -55,6 +60,9 @@
                 <div id="admin-menu" class="absolute right-0 mt-2 w-48 bg-white shadow-md rounded-lg hidden">
                     <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                         Perfil
+                    </a>
+                    <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                        Panel de control
                     </a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
@@ -113,12 +121,14 @@
     });
 
 
-    document.addEventListener('click', function (event) {
-        const adminMenu = document.getElementById('admin-menu');
-        const button = document.getElementById('admin-menu-button');
+    document.addEventListener('DOMContentLoaded', () => {
+    const alert = document.getElementById('alert-message');
+    if (alert) {
+        setTimeout(() => {
+            alert.remove();
+        }, 5000); 
+    }
+});
+   
 
-        if (!adminMenu.contains(event.target) && !button.contains(event.target)) {
-            adminMenu.classList.add('hidden');
-        }
-    });
 </script>
