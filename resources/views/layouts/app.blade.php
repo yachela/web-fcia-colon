@@ -7,10 +7,10 @@
 
         <title>@yield('title', 'Farmacia Colon')</title>
 
-        <!-- Favicon -->
+      
         <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}"> 
 
-        <!-- Fonts -->
+   
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -21,14 +21,19 @@
         rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-        <!-- Scripts -->
       
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
-            <!-- Page Heading -->
+            @if (session('error'))
+            <div class="text-red text-center py-3">
+                {{ session('error') }}
+            </div>
+        @endif
+
+          
             @isset($header)
                 <header class="bg-white shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">

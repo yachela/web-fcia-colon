@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
 
 
 class ProductsController extends Controller
@@ -21,8 +23,11 @@ class ProductsController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
-        return view('products.create', compact('categories'));
+        if (!Auth::user()->hasRole(['Admin', 'Employee'])) {
+            abort(403, 'No tienes permiso para crear productos.');
+        }
+
+        return view('products.create');
     }
 
 
@@ -34,6 +39,10 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
+        if (!Auth::user()->hasRole(['Admin', 'Employee'])) {
+            abort(403, 'No tienes permiso para almacenar productos.');
+        }
+
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
@@ -76,6 +85,10 @@ class ProductsController extends Controller
     }
     public function edit($id)
     {
+        if (!Auth::user()->hasRole(['Admin', 'Employee'])) {
+            abort(403, 'No tienes permiso para editar productos.');
+        }
+
         $product = Product::findOrFail($id);
         $categories = Category::all();
         return view('products.edit', compact('product', 'categories'));
@@ -83,6 +96,9 @@ class ProductsController extends Controller
 
     public function update(Request $request, $id)
     {
+        if (!Auth::user()->hasRole(['Admin', 'Employee'])) {
+            abort(403, 'No tienes permiso para actualizar productos.');
+        }
         $product = Product::findOrFail($id);
 
         $request->validate([
@@ -119,6 +135,9 @@ class ProductsController extends Controller
 
     public function destroy($id)
     {
+        if (!Auth::user()->hasRole(['Admin', 'Employee'])) {
+            abort(403, 'No tienes permiso para eliminar productos.');
+        }
         $product = Product::findOrFail($id);
         $product->delete();
         return redirect('/products')->with('success', 'Producto eliminado correctamente.');

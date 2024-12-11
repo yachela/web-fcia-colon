@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\DashboardController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -15,12 +16,19 @@ Route::get('/products', [ProductsController::class, 'index'])->name('products.in
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware('role:Admin|Employee')->name('dashboard');
+
 
 Route::resource('users', AdminUserController::class);
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('admin/users', AdminUserController::class);
 });
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware('auth')
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/products/create', [ProductsController::class, 'create'])->name('products.create');
