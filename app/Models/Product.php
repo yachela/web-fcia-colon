@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
@@ -12,6 +13,7 @@ class Product extends Model
 
     protected $table = 'products';
 
+  
     protected $fillable = [
         'name',
         'description',
@@ -22,9 +24,10 @@ class Product extends Model
         'is_prescription',
         'expiration_date',
         'manufacturer',
+        'slug', 
     ];
 
-
+  
     protected function name(): Attribute
     {
         return Attribute::make(
@@ -33,9 +36,25 @@ class Product extends Model
         );
     }
 
+  
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::creating(function ($product) {
+            $product->slug = Str::slug($product->name);
+        });
+    }
+
+ 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+   
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

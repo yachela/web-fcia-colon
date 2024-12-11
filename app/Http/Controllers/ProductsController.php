@@ -14,7 +14,7 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->paginate(10);
         return view('products.index', compact('products'));
     }
 
@@ -26,9 +26,8 @@ class ProductsController extends Controller
     }
 
 
-    public function show($id)
+    public function show(Product $product)
     {
-        $product = Product::with('category')->findOrFail($id);
         return view('products.show', compact('product'));
     }
 

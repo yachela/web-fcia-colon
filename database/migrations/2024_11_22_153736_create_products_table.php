@@ -23,6 +23,8 @@ return new class extends Migration
             $table->date('expiration_date')->nullable(); 
             $table->string('manufacturer')->nullable(); 
             $table->timestamps(); 
+            
+          
         });
     }
 

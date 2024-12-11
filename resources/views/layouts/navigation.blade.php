@@ -1,7 +1,7 @@
 <div class="w-full bg-white shadow-lg border-b border-gray-200">
     <div class="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="{{ route('home') }}" class="text-2xl font-bold text-gray-800">
-            Farmacia Colon
+        <a href="{{ route('home') }}" class="flex items-center">
+            <img src="{{ asset('images/logo.svg') }}" alt="Farmacia Colón" class="logo">
         </a>
 
         <button id="mobile-menu-button" class="sm:hidden flex items-center text-gray-700 focus:outline-none">

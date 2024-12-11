@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 class ProductSeeder extends Seeder
 {
@@ -16,6 +17,7 @@ class ProductSeeder extends Seeder
         DB::table('products')->insert([
             [
                 'name' => 'Paracetamol 500mg',
+                'slug' => Str::slug('Paracetamol 500mg'), 
                 'description' => 'Medicamento para el alivio del dolor y la fiebre.',
                 'category_id' => $medicamentos->id,
                 'price' => 3550,
@@ -29,6 +31,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Jarabe Expectorante Cedric',
+                'slug' => Str::slug('Jarabe Expectorante Cedric'),
                 'description' => 'Jarabe para aliviar la tos seca y la flema.',
                 'category_id' => $medicamentos->id,
                 'price' => 8999,
@@ -42,6 +45,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Multivitamínico Centrum',
+                'slug' => Str::slug('Multivitamínico Centrum'),
                 'description' => 'Fórmula completa con vitaminas y minerales esenciales.',
                 'category_id' => $suplementos->id,
                 'price' => 25000,
@@ -55,6 +59,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Ibuprofeno 600mg',
+                'slug' => Str::slug('Ibuprofeno 600mg'),
                 'description' => 'Alivia el dolor moderado y reduce la inflamación.',
                 'category_id' => $medicamentos->id,
                 'price' => 4999,
