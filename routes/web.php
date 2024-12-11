@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CartController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -53,6 +54,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+    Route::delete('/cart/remove/{cartItem}', [CartController::class, 'remove'])->name('cart.remove');
 });
 
 

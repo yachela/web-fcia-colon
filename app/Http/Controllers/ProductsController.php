@@ -26,8 +26,9 @@ class ProductsController extends Controller
         if (!Auth::user()->hasRole(['Admin', 'Employee'])) {
             abort(403, 'No tienes permiso para crear productos.');
         }
+        $categories = Category::all(); // Obtener todas las categorías
+        return view('products.create', compact('categories')); // Pasarlas a la vista
 
-        return view('products.create');
     }
 
 

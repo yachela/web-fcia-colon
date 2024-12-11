@@ -15,7 +15,7 @@ class DashboardController extends Controller
        
         if (!Auth::user()->hasRole(['Admin', 'Employee'])) {
        
-            return redirect()->route('home')->with('error', 'No tenes permisos suficientes.');
+            return redirect()->route('home');
         }
 
         return view('dashboard');

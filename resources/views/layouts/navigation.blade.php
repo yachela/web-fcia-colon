@@ -61,9 +61,17 @@
                     <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                         Perfil
                     </a>
+                    @role('Admin|Employee')
                     <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
                         Panel de control
                     </a>
+                    @endrole
+                    @role('Customer')
+                    <a href="{{ route('cart.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                        Mi carrito
+                    </a>
+                        
+                    @endrole
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
