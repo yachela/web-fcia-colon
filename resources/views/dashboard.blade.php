@@ -48,30 +48,32 @@
                     </a>
 
                     @role('Admin')
-                    <a href="{{ route('users.index') }}"
-                        class="bg-sky-100 p-6 rounded-lg shadow-md hover:bg-sky-200 transition duration-300">
-                        <div class="flex flex-col items-center">
-                            <span class="material-symbols-outlined text-4xl text-purple-500 mb-4">
-                                group
-                            </span>
-                            <h3 class="text-lg font-semibold text-gray-800">Gestionar Usuarios</h3>
-                            <p class="text-sm text-gray-600">Accede a la gestión de usuarios</p>
-                        </div>
-                    </a>
+                        <a href="{{ route('users.index') }}"
+                            class="bg-sky-100 p-6 rounded-lg shadow-md hover:bg-sky-200 transition duration-300">
+                            <div class="flex flex-col items-center">
+                                <span class="material-symbols-outlined text-4xl text-purple-500 mb-4">
+                                    group
+                                </span>
+                                <h3 class="text-lg font-semibold text-gray-800">Gestionar Usuarios</h3>
+                                <p class="text-sm text-gray-600">Accede a la gestión de usuarios</p>
+                            </div>
+                        </a>
                     @else
-                    <div class="relative group bg-gray-100 p-6 rounded-lg shadow-md hover:bg-purple-200 transition duration-300">
-                        <div class="flex flex-col items-center">
-                            <span class="material-symbols-outlined text-4xl text-purple-500 mb-4">
-                                group
-                            </span>
-                            <h3 class="text-lg font-semibold text-gray-800">Gestionar Usuarios</h3>
-                            <p class="text-sm text-gray-600">Accede a la gestión de usuarios</p>
+                        <div
+                            class="relative group bg-gray-100 p-6 rounded-lg shadow-md hover:bg-purple-200 transition duration-300">
+                            <div class="flex flex-col items-center">
+                                <span class="material-symbols-outlined text-4xl text-purple-200 mb-4">
+                                    group
+                                </span>
+                                <h3 class="text-lg font-semibold text-gray-800">Gestionar Usuarios</h3>
+                                <p class="text-sm text-gray-600">Accede a la gestión de usuarios</p>
+                            </div>
+
+                            <div
+                                class="absolute bottom-16 left-1/2 transform -translate-x-1/2 w-max px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                No tienes permisos suficientes
+                            </div>
                         </div>
-       
-                        <div class="absolute bottom-16 left-1/2 transform -translate-x-1/2 w-max px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            No tienes permisos suficientes
-                        </div>
-                    </div>
                     @endrole
                 </div>
             </div>

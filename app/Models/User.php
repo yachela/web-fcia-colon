@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+
 /**
  * @method bool hasRole(string|array $roles, string|null $guard = null)
  * @method bool hasAnyRole(string|array $roles, string|null $guard = null)
@@ -67,7 +68,7 @@ class User extends Authenticatable
     }
 
     public function cart()
-{
-    return $this->hasOne(Cart::class);
-}
+    {
+        return $this->hasOne(Cart::class);
+    }
 }

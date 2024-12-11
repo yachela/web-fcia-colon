@@ -13,11 +13,11 @@
             </x-button>
         </div>
 
-     
+
         <div class="w-full bg-transparent py-16 px-6">
             <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Explora Nuestras Categorías</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-6 max-w-7xl mx-auto">
-          
+
                 <div class="hover:scale-105 transform transition duration-300">
                     <img src="{{ asset('images/pills.jpg') }}" alt="Medicamentos"
                         class="w-[300px] h-[200px] object-cover rounded-xl">
@@ -25,11 +25,12 @@
                     <p class="text-gray-600 mt-2">Encuentra medicamentos esenciales al mejor precio.</p>
                 </div>
                 <div class="hover:scale-105 transform transition duration-300">
-                    <img src="{{ asset('images/suplements.jpg') }}" alt="Suplementos" class="w-[300px] h-[200px] object-cover rounded-xl">
+                    <img src="{{ asset('images/suplements.jpg') }}" alt="Suplementos"
+                        class="w-[300px] h-[200px] object-cover rounded-xl">
                     <h3 class="text-xl font-semibold text-gray-800 mt-4">Suplementos</h3>
                     <p class="text-gray-600 mt-2">Reforzamos tu salud con vitaminas y minerales.</p>
                 </div>
-                
+
                 <div class="hover:scale-105 transform transition duration-300">
                     <img src="{{ asset('images/self-care.jpg') }}" alt="Cuidado Personal"
                         class="w-[300px] h-[200px] object-cover rounded-xl">

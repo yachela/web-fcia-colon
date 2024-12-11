@@ -1,10 +1,11 @@
 <x-app-layout>
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-2xl text-center font-bold text-gray-800 mb-6">Formulario para crear producto</h1>
-        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto space-y-4">
+        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data"
+            class="bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto space-y-4">
             @csrf
-        
-            
+
+
             <div class="mb-4">
                 <label for="name" class="block text-gray-700 font-semibold mb-2">Nombre:</label>
                 <span class="text-xs text-red-600">
@@ -15,7 +16,7 @@
                 <input type="text" id="name" name="name" value="{{ old('name') }}" required
                     class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
             </div>
-        
+
             <div class="mb-4">
                 <label for="description" class="block text-gray-700 font-semibold mb-2">Descripción:</label>
                 <span class="text-xs text-red-600">
@@ -26,8 +27,8 @@
                 <textarea id="description" name="description" rows="4" required
                     class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">{{ old('description') }}</textarea>
             </div>
-        
-          
+
+
             <div class="mb-4">
                 <label for="category_id" class="block text-gray-700 font-semibold mb-2">Categoría:</label>
                 <span class="text-xs text-red-600">
@@ -45,8 +46,8 @@
                     @endforeach
                 </select>
             </div>
-        
-           
+
+
             <div class="mb-4">
                 <label for="price" class="block text-gray-700 font-semibold mb-2">Precio:</label>
                 <span class="text-xs text-red-600">
@@ -58,8 +59,8 @@
                     value="{{ old('price') }}" required
                     class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
             </div>
-        
-          
+
+
             <div class="mb-4">
                 <label for="stock" class="block text-gray-700 font-semibold mb-2">Stock:</label>
                 <span class="text-xs text-red-600">
@@ -70,19 +71,23 @@
                 <input type="number" id="stock" name="stock" min="0" value="{{ old('stock') }}" required
                     class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
             </div>
-        
-    
+
+
             <div>
                 <label for="image_url" class="block text-sm font-medium text-gray-900">Imagen del Producto:</label>
                 <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                     <div class="text-center">
-            
-                            <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z" clip-rule="evenodd" />
-                            </svg>
-               
+
+                        <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0 0 21 18v-1.94l-2.69-2.689a1.5 1.5 0 0 0-2.12 0l-.88.879.97.97a.75.75 0 1 1-1.06 1.06l-5.16-5.159a1.5 1.5 0 0 0-2.12 0L3 16.061Zm10.125-7.81a1.125 1.125 0 1 1 2.25 0 1.125 1.125 0 0 1-2.25 0Z"
+                                clip-rule="evenodd" />
+                        </svg>
+
                         <div class="mt-4 flex text-sm text-gray-600 justify-center">
-                            <label for="image_url" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
+                            <label for="image_url"
+                                class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                                 <span>Subir archivo, </span>
                                 <input id="image_url" name="image_url" type="file" class="sr-only" accept="image/*">
                             </label>
@@ -92,8 +97,8 @@
                     </div>
                 </div>
             </div>
-        
-        
+
+
             <div class="mb-4">
                 <label for="is_prescription" class="block text-gray-700 font-semibold mb-2">¿Requiere receta?</label>
                 <select id="is_prescription" name="is_prescription" required
@@ -102,8 +107,8 @@
                     <option value="1" {{ old('is_prescription') == '1' ? 'selected' : '' }}>Sí</option>
                 </select>
             </div>
-        
-       
+
+
             <div class="mb-4">
                 <label for="expiration_date" class="block text-gray-700 font-semibold mb-2">Fecha de Expiración:</label>
                 <span class="text-xs text-red-600">
@@ -111,11 +116,12 @@
                         {{ $message }}
                     @enderror
                 </span>
-                <input type="date" id="expiration_date" name="expiration_date" value="{{ old('expiration_date') }}" required
+                <input type="date" id="expiration_date" name="expiration_date" value="{{ old('expiration_date') }}"
+                    required
                     class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
             </div>
-        
-          
+
+
             <div class="mb-4">
                 <label for="manufacturer" class="block text-gray-700 font-semibold mb-2">Fabricante:</label>
                 <span class="text-xs text-red-600">
@@ -126,8 +132,8 @@
                 <input type="text" id="manufacturer" name="manufacturer" value="{{ old('manufacturer') }}" required
                     class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300">
             </div>
-        
-           
+
+
             <div class="mt-6">
                 <button type="submit"
                     class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">

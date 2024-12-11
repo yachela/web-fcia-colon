@@ -9,16 +9,16 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class Item extends Model
 {
     use HasFactory;
-    protected function title(): Attribute { 
-        
+    protected function title(): Attribute
+    {
+
         return Attribute::make(
-            set: function($value){
+            set: function ($value) {
                 return strtolower($value);
-            }, 
-            get: function($value){
+            },
+            get: function ($value) {
                 return ucfirst($value);
             }
         );
-
-}
+    }
 }

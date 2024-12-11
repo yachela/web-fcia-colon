@@ -4,8 +4,8 @@
             <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Gestión de Usuarios</h1>
 
             @auth
-                <a href="{{ route('users.create') }}" 
-                   class="inline-block bg-green-600 text-white font-semibold text-sm py-2 px-6 rounded-lg shadow-md hover:bg-green-700 hover:shadow-lg transition duration-300 mb-6">
+                <a href="{{ route('users.create') }}"
+                    class="inline-block bg-green-600 text-white font-semibold text-sm py-2 px-6 rounded-lg shadow-md hover:bg-green-700 hover:shadow-lg transition duration-300 mb-6">
                     Agregar Usuario
                 </a>
             @endauth
@@ -28,8 +28,8 @@
                                 <td class="py-3 px-6 text-left">{{ $user->roles->pluck('name')->join(', ') }}</td>
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex justify-center items-center space-x-4">
-                                        <a href="{{ route('users.edit', $user->id) }}" 
-                                           class="text-blue-600 px-4 hover:underline">Editar</a>
+                                        <a href="{{ route('users.edit', $user->id) }}"
+                                            class="text-blue-600 px-4 hover:underline">Editar</a>
                                         <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')

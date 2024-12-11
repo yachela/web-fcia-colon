@@ -13,7 +13,7 @@ class Product extends Model
 
     protected $table = 'products';
 
-  
+
     protected $fillable = [
         'name',
         'description',
@@ -24,19 +24,19 @@ class Product extends Model
         'is_prescription',
         'expiration_date',
         'manufacturer',
-        'slug', 
+        'slug',
     ];
 
-  
+
     protected function name(): Attribute
     {
         return Attribute::make(
-            set: fn($value) => strtolower($value), 
+            set: fn($value) => strtolower($value),
             get: fn($value) => ucfirst($value)
         );
     }
 
-  
+
     protected static function boot()
     {
         parent::boot();
@@ -46,13 +46,13 @@ class Product extends Model
         });
     }
 
- 
+
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
-   
+
     public function getRouteKeyName()
     {
         return 'slug';
